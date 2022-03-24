@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"strconv"
 )
 
 // Пользовательский тип данных для ошибки. Совместим со встроенным.
@@ -39,11 +38,6 @@ func main() {
 	}
 	fmt.Println(val)
 	err = ErrNotExists // корректно
-
-	n, err := strconv.ParseInt("10", 10, 64)
-	if err != nil {
-		panic(err)
-	}
 }
 
 // envVar возвращает переменную окружения, заданную по имени.
