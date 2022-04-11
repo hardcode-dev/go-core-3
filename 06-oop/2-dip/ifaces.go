@@ -29,7 +29,7 @@ type CustomLogger struct {
 }
 
 // MemLogger - заглушка журнала в памяти для тестов.
-type MemLogger int
+type MemLogger struct{}
 
 // Log ничего не делает. Обратите внимание на отсутствие имён у получателя и аргумента.
 func (*MemLogger) Log(string) error {
@@ -37,7 +37,7 @@ func (*MemLogger) Log(string) error {
 }
 
 func main() {
-	l := new(DBLogger)
+	l := new(CustomLogger)
 	err := logMsg(l, "сообщение")
 	if err != nil {
 		log.Println(err)
@@ -47,6 +47,7 @@ func main() {
 
 // logMsg записывает сообщение в журнал
 func logMsg(l Logger, msg string) error {
+	// CODE
 	err := l.Log(msg)
 	return err
 }

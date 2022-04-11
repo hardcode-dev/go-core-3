@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 )
 
@@ -15,6 +14,10 @@ type processor struct {
 	cores int
 }
 
+func (c *computer) cpuinfo() string {
+	return fmt.Sprintf("computer cpuinfo()")
+}
+
 func (p *processor) cpuinfo() string {
 	return fmt.Sprintf("%s, %d ядер", p.model, p.cores)
 }
@@ -24,13 +27,13 @@ func (c *computer) String() string {
 }
 
 func main() {
-	flag.StringVar()
-	c := &computer{
+	comp := &computer{
 		model: "Компьютер игровой",
 		processor: processor{
 			model: "Байкал",
 			cores: 8,
 		},
 	}
-	fmt.Println(c.cpuinfo())
+
+	fmt.Println(comp.cpuinfo())
 }

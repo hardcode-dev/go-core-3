@@ -45,6 +45,7 @@ func rates() (Rates, error) {
 	if err != nil {
 		return Rates{}, err
 	}
+
 	return data, nil
 }
 

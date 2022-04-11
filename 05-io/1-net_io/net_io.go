@@ -24,9 +24,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	// Подключения обрабатываются в бесконечном цикле.
 	// Иначе после обслуживания первого подключения сервер
-	//завершит работу.
+	// завершит работу.
 	for {
 		// Принимаем подключение.
 		conn, err := listener.Accept()
@@ -34,12 +35,13 @@ func main() {
 			log.Fatal(err)
 		}
 		// Вызов обработчика подключения.
-		go handleConn(conn)
+		handleConn(conn)
 	}
 }
 
 // Обработчик. Вызывается для каждого соединения.
 func handleConn(conn net.Conn) {
+
 	// Чтение сообщения от клиента.
 	var req []byte
 	var buf = make([]byte, 2)
@@ -61,9 +63,11 @@ func handleConn(conn net.Conn) {
 			break
 		}
 	}
+
 	// Удаление символов конца строки.
 	msg := strings.TrimSuffix(string(req), "\n")
 	msg = strings.TrimSuffix(msg, "\r")
+
 	// Если получили "time" - пишем время в соединение.
 	if msg == "time" {
 		n, err := conn.Write([]byte(time.Now().String() + "\n"))
@@ -73,6 +77,7 @@ func handleConn(conn net.Conn) {
 		}
 		log.Printf("клиенту отправлено %d байт", n)
 	}
+
 	// Закрытие соединения.
 	conn.Close()
 }

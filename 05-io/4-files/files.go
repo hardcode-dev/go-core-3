@@ -30,8 +30,9 @@ func main() {
 		log.Fatal(err)
 	}
 	defer file.Close()
+
 	// что здесь не правильно?
-	buf := make([]byte, 4)
+	buf := make([]byte, 6)
 	n, err := file.Read(buf)
 	if err != nil {
 		log.Fatal(err)

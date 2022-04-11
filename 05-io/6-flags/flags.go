@@ -10,6 +10,8 @@ func main() {
 	var n int
 	flag.IntVar(&n, "n", 10, "количество")
 	flag.IntVar(&n, "number", 10, "количество")
+
 	flag.Parse()
+
 	fmt.Println(*s, n)
 }

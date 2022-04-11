@@ -1,8 +1,13 @@
 package db
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestProductCRUD(t *testing.T) {
+	if !testing.Short() {
+		t.Skip()
+	}
 
 	var item = Product{
 		Name:  "Пепелац",

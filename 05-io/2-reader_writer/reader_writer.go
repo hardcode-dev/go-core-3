@@ -17,26 +17,16 @@ func main() {
 		log.Fatal(err)
 	}
 	f.Close()
+
 	f, err = os.Create("./reader_writer_copy.go")
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	err = store(f, b)
 	if err != nil {
 		log.Fatal(err)
 	}
 	f.Close()
-
-	// Тот же самый код работает с калвиатурой.
-	/*b, err = get(os.Stdin)
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = store(os.Stdout, b)
-	if err != nil {
-		log.Fatal(err)
-	}*/
 }
 
 func store(w io.Writer, b []byte) error {
@@ -48,6 +38,8 @@ func store(w io.Writer, b []byte) error {
 }
 
 func get(r io.Reader) ([]byte, error) {
+	return io.ReadAll(r)
+	/*/
 	var b []byte
 	var buf = make([]byte, 10)
 	for {
@@ -62,5 +54,5 @@ func get(r io.Reader) ([]byte, error) {
 		b = append(b, buf...)
 	}
 	// Здесь какая-то логика.
-	return b, nil
+	return b, nil*/
 }

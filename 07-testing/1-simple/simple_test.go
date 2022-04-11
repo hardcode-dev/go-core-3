@@ -12,6 +12,7 @@ func Test_sum(t *testing.T) {
 	if got != want { // сравнение результата с правильным значением
 		t.Errorf("получили %d, ожидалось %d", got, want)
 	}
+	t.Log("ABC")
 }
 
 // === RUN   Test_sum

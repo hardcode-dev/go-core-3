@@ -22,6 +22,7 @@ func (api API) ProductsHandler(w http.ResponseWriter, r *http.Request) {
 			Price: 1000,
 		},
 	}
+
 	err := json.NewEncoder(w).Encode(data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

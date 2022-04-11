@@ -19,6 +19,7 @@ func main() {
 		}
 		fmt.Println("echo:", text)
 	}
+
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Print("NewScanner-> ")
 	for scanner.Scan() {
@@ -28,6 +29,7 @@ func main() {
 		fmt.Println(scanner.Text())
 		fmt.Print("NewScanner-> ")
 	}
+
 	for {
 		fmt.Print("fmt.Scanln-> ")
 		var s string
