@@ -3,9 +3,9 @@ package main
 import (
 	"net/http"
 
-	"go-core-2/16-api-2/pkg/api"
-
 	"github.com/gorilla/mux"
+
+	"go-dev-v3/13-api/2-api/pkg/api"
 )
 
 type server struct {

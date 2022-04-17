@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1
 	github.com/prometheus/client_golang v1.12.1
@@ -13,6 +14,7 @@ require (
 
 require (
 	github.com/gorilla/securecookie v1.1.1 // indirect
+	github.com/jackc/puddle v1.2.1 // indirect
 	google.golang.org/genproto v0.0.0-20220414192740-2d67ff6cf2b4 // indirect
 )
 
