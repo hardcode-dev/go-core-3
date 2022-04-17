@@ -26,7 +26,7 @@ func (c cassete) isOld() bool {
 	return true
 }
 
-func (c cassete) isObsolete() bool {
+func (c *cassete) isObsolete() bool {
 	return false
 }
 
@@ -38,12 +38,19 @@ func main() {
 	// m.label = "Ace Of Base" - ошибка
 	m.isModern()
 
-	if cassete, ok := m.(cassete); ok {
-		cassete.label = "Ace Of Base"
-		log.Printf("%+v", cassete)
+	switch c1 := m.(type) {
+	case cassete:
+		c1.label = ""
+	case old:
+		c1.isOld()
 	}
 
-	if cassete, ok := m.(old); ok {
-		fmt.Println("Old: ", cassete.isOld(), "\tObsolete: ", cassete.isObsolete())
+	if c1, ok := m.(cassete); ok {
+		c1.label = "Ace Of Base"
+		log.Printf("%+v", c1)
+	}
+
+	if c2, ok := m.(old); ok {
+		fmt.Println("Old: ", c2.isOld(), "\tObsolete: ", c2.isObsolete())
 	}
 }

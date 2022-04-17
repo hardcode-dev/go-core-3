@@ -1,6 +1,17 @@
 package important
 
-import "time"
+import (
+	"time"
+)
+
+type E struct {
+	code int
+	msg  string
+}
+
+func (e *E) Error() string {
+	return e.msg
+}
 
 // builtin
 type error interface {

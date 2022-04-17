@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"testing"
 
 	"github.com/gorilla/mux"
@@ -14,7 +13,7 @@ import (
 func TestMain(m *testing.M) {
 	r = mux.NewRouter()
 	endpoints(r)
-	os.Exit(m.Run())
+	m.Run()
 }
 
 func Test_mainHandler(t *testing.T) {
@@ -32,6 +31,8 @@ func Test_mainHandler(t *testing.T) {
 	}
 
 	t.Log("Response: ", rr.Body)
+
+	//=========================================================
 
 	req = httptest.NewRequest(http.MethodGet, "/Name", nil)
 	req.Header.Add("content-type", "plain/text")

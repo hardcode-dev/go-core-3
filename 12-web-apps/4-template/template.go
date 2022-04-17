@@ -10,9 +10,11 @@ import (
 func main() {
 	// сторонний маршрутизатор из пакета Gorilla
 	mux := mux.NewRouter()
+
 	// регистрация обработчик}а для URL `/` в маршрутизаторе по умолчанию
 	mux.HandleFunc("/{first}/{last}", mainHandler).Methods(http.MethodGet)
-	// старт HTTP-сервера на порту 8080 протоколоа TCP с маршрутизатором запросов по умолчанию
+
+	// старт HTTP-сервера на порту 8080 протокола TCP
 	http.ListenAndServe(":8080", mux)
 }
 

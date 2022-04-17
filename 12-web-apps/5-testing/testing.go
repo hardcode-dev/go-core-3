@@ -13,7 +13,6 @@ var r *mux.Router
 func main() {
 	r = mux.NewRouter()
 	endpoints(r)
-	// старт HTTP-сервера на порту 8080 протоколоа TCP с маршрутизатором запросов по умолчанию
 	http.ListenAndServe(":8080", r)
 }
 

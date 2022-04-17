@@ -39,6 +39,7 @@ func main() {
 		Name: "Курт",
 		Age:  27,
 	}
-	var s serializer = p
+	var s serializer
+	s = p
 	print(str(s))
 }
