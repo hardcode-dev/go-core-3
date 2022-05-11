@@ -10,9 +10,11 @@ import (
 	"github.com/gorilla/mux"
 )
 
+var testMux *mux.Router
+
 func TestMain(m *testing.M) {
-	r = mux.NewRouter()
-	endpoints(r)
+	testMux = mux.NewRouter()
+	endpoints(testMux)
 	m.Run()
 }
 
@@ -24,7 +26,7 @@ func Test_mainHandler(t *testing.T) {
 
 	rr := httptest.NewRecorder()
 
-	r.ServeHTTP(rr, req)
+	testMux.ServeHTTP(rr, req)
 
 	if rr.Code != http.StatusMethodNotAllowed {
 		t.Errorf("код неверен: получили %d, а хотели %d", rr.Code, http.StatusOK)
@@ -39,7 +41,7 @@ func Test_mainHandler(t *testing.T) {
 
 	rr = httptest.NewRecorder()
 
-	r.ServeHTTP(rr, req)
+	testMux.ServeHTTP(rr, req)
 
 	if rr.Code != http.StatusOK {
 		t.Errorf("код неверен: получили %d, а хотели %d", rr.Code, http.StatusOK)

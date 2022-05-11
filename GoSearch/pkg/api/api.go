@@ -65,8 +65,10 @@ func (s *Service) endpoints() {
 	s.router.Handle("/debug/pprof/heap", pprof.Handler("heap"))
 	s.router.Handle("/debug/pprof/threadcreate", pprof.Handler("threadcreate"))
 	s.router.Handle("/debug/pprof/block", pprof.Handler("block"))
+
 	// поиск
 	s.router.HandleFunc("/search/{query}", s.Search)
+
 	// веб-приложение
 	s.router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("./webapp"))))
 }

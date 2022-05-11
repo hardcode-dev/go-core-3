@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -17,7 +18,7 @@ func main() {
 	srv.api = &API{router: srv.router}
 	srv.api.Endpoints()
 
-	http.ListenAndServe(":8080", srv.router)
+	log.Fatal(http.ListenAndServe(":8081", srv.router))
 }
 
 type book struct {

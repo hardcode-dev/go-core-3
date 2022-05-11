@@ -6,6 +6,7 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"net/http/httputil"
 	"strings"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -61,7 +62,11 @@ func (api *API) jwtMiddleware(next http.Handler) http.Handler {
 func requestIDMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := context.WithValue(r.Context(), "request_id", rand.Intn(1_000_000))
-		next.ServeHTTP(w, r.WithContext(ctx))
+		newR := r.WithContext(ctx)
+		b, _ := httputil.DumpRequest(newR, true)
+		fmt.Printf("%+v", string(b))
+
+		next.ServeHTTP(w, newR)
 	})
 }
 

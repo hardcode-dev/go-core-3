@@ -1,6 +1,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -34,4 +35,8 @@ func (api *API) Endpoints() {
 
 	api.router.HandleFunc("/api/v1/books", api.books).Methods(http.MethodGet, http.MethodOptions)
 	api.router.HandleFunc("/api/v1/newBook", api.newBook).Methods(http.MethodPost, http.MethodOptions)
+
+	rr, _ := http.NewRequestWithContext(context.Background(), "GET", "https://yandex.ru", nil)
+
+	http.DefaultClient.Do(rr)
 }

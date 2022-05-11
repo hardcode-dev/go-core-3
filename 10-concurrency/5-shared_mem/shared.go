@@ -6,21 +6,25 @@ import (
 )
 
 // add прибавляет x к sum
-func add(sum *int, wg *sync.WaitGroup) {
+func add(sum *int, wg *sync.WaitGroup, mu *sync.Mutex) {
 	defer wg.Done()
 	for i := 1; i <= 10_000; i++ {
+		mu.Lock()
 		*sum++
+		mu.Unlock()
 	}
 }
 
 func main() {
 	sum := 0
+	var mu sync.Mutex
 
 	var wg sync.WaitGroup
 	wg.Add(2)
-	for i := 0; i < 2; i++ {
-		go add(&sum, &wg)
-	}
+
+	go add(&sum, &wg, &mu)
+	go add(&sum, &wg, &mu)
+
 	wg.Wait()
 
 	fmt.Println(sum) // Что будет на экране?

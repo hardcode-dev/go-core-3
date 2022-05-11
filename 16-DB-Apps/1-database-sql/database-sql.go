@@ -34,6 +34,7 @@ func main() {
 	}
 	// Не забываем очищать ресурсы.
 	defer db.Close()
+
 	// Проверка соединения с БД. На случай, если sql.Open этого не делает.
 	err = db.Ping()
 	if err != nil {
@@ -125,6 +126,7 @@ func addBooks(db *sql.DB, books []book) error {
 		return err
 	}
 	defer stmt.Close()
+
 	for _, book := range books {
 		res, err := stmt.Exec(book.Title, book.Year)
 		if err != nil {
@@ -133,10 +135,12 @@ func addBooks(db *sql.DB, books []book) error {
 		id, _ := res.LastInsertId()
 		fmt.Println("Создана запись с ID:", id)
 	}
+
 	// подтверждение транзакции
 	err = tx.Commit()
 	if err != nil {
 		return err
 	}
+
 	return nil
 }

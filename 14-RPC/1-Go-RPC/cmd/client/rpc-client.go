@@ -20,6 +20,7 @@ func main() {
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
+
 	// получение списка книг, используя тип данных результата из пакета "books"
 	var req = &books.Request{}
 	var data []books.Book
@@ -28,6 +29,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("%+v\n", data)
+
 	// получение книги по ID, используя локальный тип данных
 	req = &books.Request{ID: 1}
 	var item book
