@@ -6,7 +6,6 @@
 
 INSERT INTO authors (id, first_name) VALUES (0, 'автор не указан');
 INSERT INTO authors (id, first_name) VALUES (1, 'автор не указан');
-INSERT INTO authors (first_name) VALUES ('автор не указан');
 -- поскольку id установлен принудительно, то необходимо изменить начало послеовательности
 ALTER SEQUENCE authors_id_seq RESTART WITH 100;
 
