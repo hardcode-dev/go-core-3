@@ -2,9 +2,17 @@ package engine
 
 import (
 	"go-dev-v3/GoSearch/pkg/crawler"
+	"go-dev-v3/GoSearch/pkg/storage/memstore"
 	"reflect"
 	"testing"
 )
+
+var testService *Service
+
+func TestMain(m *testing.M) {
+	db := memstore.New()
+	testService = New(nil, db)
+}
 
 func TestService_Search(t *testing.T) {
 	type args struct {

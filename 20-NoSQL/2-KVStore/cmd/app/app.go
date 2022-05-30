@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"sf/32_NoSQL/KVStore/pkg/kvdb"
+	"go-dev-v3/20-NoSQL/2-KVStore/pkg/kvdb"
 )
 
 func main() {

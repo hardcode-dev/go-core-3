@@ -88,7 +88,7 @@ func books(db *sql.DB) ([]book, error) {
 		0,
 	)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 	defer rows.Close()
 
@@ -109,6 +109,7 @@ func books(db *sql.DB) ([]book, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return books, nil
 }
 

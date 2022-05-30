@@ -24,7 +24,7 @@ func main() {
 	ctx := context.Background()
 	// Подключение к БД. Функция возвращает объект БД.
 	pwd := os.Getenv("pgpassword")
-	db, err := pgxpool.Connect(context.Background(), "postgres://postgres:"+pwd+"@ubuntu-server.northeurope.cloudapp.azure.com/books")
+	db, err := pgxpool.Connect(ctx, "postgres://postgres:"+pwd+"@ubuntu-server.northeurope.cloudapp.azure.com/books")
 	if err != nil {
 		log.Fatalf("Unable to connect to database: %v\n", err)
 	}
